@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+            http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
+            version="2.2">
+
+    <persistence-unit name="FacturacionPU" transaction-type="RESOURCE_LOCAL">
+
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+        <class>com.tp.facturacion.model.Usuario</class>
+        <class>com.tp.facturacion.model.Contacto</class>
+        <class>com.tp.facturacion.model.Domicilio</class>
+        <class>com.tp.facturacion.model.TipoMoneda</class>
+        <class>com.tp.facturacion.model.CondicionIva</class>
+        <class>com.tp.facturacion.model.ListaPrecio</class>
+        <class>com.tp.facturacion.model.Marca</class>
+        <class>com.tp.facturacion.model.Rubro</class>
+        <class>com.tp.facturacion.model.PuntoVenta</class>
+        <class>com.tp.facturacion.model.Articulo</class>
+        <class>com.tp.facturacion.model.ListaPrecioArticulo</class>
+        <class>com.tp.facturacion.model.Cliente</class>
+        <class>com.tp.facturacion.model.FacturaVenta</class>
+        <class>com.tp.facturacion.model.FacturaVentaDetalle</class>
+
+        <properties>
+            <!-- Conexión JDBC a PostgreSQL -->
+            <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/facturacion"/>
+            <property name="javax.persistence.jdbc.user" value="giovita"/>
+            <property name="javax.persistence.jdbc.password" value=""/>
+
+            <!-- Dialecto de PostgreSQL -->
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
+
+            <!-- Crea/actualiza tablas desde las entidades -->
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+
+            <!-- Muestra el SQL formateado -->
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+        </properties>
+    </persistence-unit>
+</persistence>

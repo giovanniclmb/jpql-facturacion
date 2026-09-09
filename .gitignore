@@ -1,0 +1,10 @@
+# Build de Maven (se regenera)
+target/
+
+# Archivos de IDE
+.vscode/
+.idea/
+*.iml
+
+# Sistema (macOS)
+.DS_Store
