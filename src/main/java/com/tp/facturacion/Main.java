@@ -71,6 +71,42 @@ public class Main {
             auditar(lpa, admin, ahora);
             em.persist(lpa);
 
+                        // Contacto y Domicilio (los necesita el Cliente, van primero)
+            Contacto contacto = new Contacto();
+            contacto.setEmail("cliente@mail.com");
+            contacto.setTelefono("2611234567");
+            contacto.setCelular("2617654321");
+            em.persist(contacto);
+
+            Domicilio domicilio = new Domicilio();
+            domicilio.setNombreCalle("San Martin");
+            domicilio.setNumeroCalle("1234");
+            em.persist(domicilio);
+
+            // Cliente
+            Cliente cliente = new Cliente();
+            cliente.setCuitCuil("20-12345678-9");
+            cliente.setDenominacion("Cliente Ejemplo SA");
+            cliente.setContacto(contacto);
+            cliente.setDomicilio(domicilio);
+            auditar(cliente, admin, ahora);
+            em.persist(cliente);
+
+            // Condición de IVA
+            CondicionIva condicionIva = new CondicionIva();
+            condicionIva.setCodigoAfip(1);
+            condicionIva.setDenominacion("Responsable Inscripto");
+            auditar(condicionIva, admin, ahora);
+            em.persist(condicionIva);
+
+            // Tipo de moneda
+            TipoMoneda moneda = new TipoMoneda();
+            moneda.setCodigoAfip("PES");
+            moneda.setDenominacion("Peso Argentino");
+            moneda.setSimbolo("$");
+            auditar(moneda, admin, ahora);
+            em.persist(moneda);
+
             // ===== FASE 2: LA FACTURA (cabecera + detalles) =====
 
             FacturaVenta factura = new FacturaVenta();
@@ -105,6 +141,10 @@ public class Main {
 
             factura.setImporteTotal(60500.0 + 30250.0);
             factura.setImporteSaldo(60500.0 + 30250.0);
+
+            factura.setCliente(cliente);
+            factura.setCondicionIva(condicionIva);
+            factura.setMoneda(moneda);
 
             // UN SOLO persist. La cascada guarda los detalles
             em.persist(factura);

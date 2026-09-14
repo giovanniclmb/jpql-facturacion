@@ -55,6 +55,18 @@ public class FacturaVenta extends AuditoriaApp {
     @OneToMany(mappedBy = "factura", cascade = CascadeType.ALL)
     private List<FacturaVentaDetalle> detalles = new ArrayList<>();
 
+    @ManyToOne
+    @JoinColumn(name = "cliente_id", nullable = false)
+    private Cliente cliente;
+
+    @ManyToOne
+    @JoinColumn(name = "condicion_iva_id", nullable = false)
+    private CondicionIva condicionIva;
+
+    @ManyToOne
+    @JoinColumn(name = "moneda_id", nullable = false)
+    private TipoMoneda moneda;
+
     // Helper: agrega un detalle y sincroniza el lado dueño de la FK
     public void addDetalle(FacturaVentaDetalle detalle) {
         detalles.add(detalle);
@@ -102,4 +114,13 @@ public class FacturaVenta extends AuditoriaApp {
 
     public List<FacturaVentaDetalle> getDetalles() { return detalles; }
     public void setDetalles(List<FacturaVentaDetalle> detalles) { this.detalles = detalles; }
+
+    public Cliente getCliente() { return cliente; }
+    public void setCliente(Cliente cliente) { this.cliente = cliente; }
+
+    public CondicionIva getCondicionIva() { return condicionIva; }
+    public void setCondicionIva(CondicionIva condicionIva) { this.condicionIva = condicionIva; }
+
+    public TipoMoneda getMoneda() { return moneda; }
+    public void setMoneda(TipoMoneda moneda) { this.moneda = moneda; }
 }
