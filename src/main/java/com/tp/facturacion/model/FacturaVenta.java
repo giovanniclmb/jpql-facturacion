@@ -20,6 +20,8 @@ public class FacturaVenta extends AuditoriaApp {
 
     private Long numero;
 
+    //cliente, cond iva y moneda many to one
+
     @Column(nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaEmision;

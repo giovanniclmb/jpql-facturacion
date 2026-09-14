@@ -20,14 +20,14 @@ public class Main {
 
             Date ahora = new Date();
 
-            // ===== FASE 1: DATOS MAESTROS (sin cascade → se persisten aparte) =====
+            //datos maestros
 
-            // Usuario: audita a todos los demás. NO lleva auditoría propia.
+            // Usuario: audita a todos los demás. No lleva auditoría propia.
             Usuario admin = new Usuario();
             admin.setUsuario("admin");
             admin.setClave("1234");
             admin.setNombre("Giovanni");
-            admin.setApellido("Perez");
+            admin.setApellido("Colombo");
             em.persist(admin);
 
             PuntoVenta puntoVenta = new PuntoVenta();
@@ -106,7 +106,7 @@ public class Main {
             factura.setImporteTotal(60500.0 + 30250.0);
             factura.setImporteSaldo(60500.0 + 30250.0);
 
-            // ===== REQUISITO CLAVE: UN SOLO persist. La cascada guarda los detalles =====
+            // UN SOLO persist. La cascada guarda los detalles
             em.persist(factura);
 
             em.getTransaction().commit();

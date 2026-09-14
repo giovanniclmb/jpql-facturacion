@@ -74,6 +74,6 @@ Herencia encadenada con `@MappedSuperclass` · claves primarias autogeneradas
 y `@OneToOne` · persistencia en cascada · asociación bidireccional · unidad de
 persistencia `RESOURCE_LOCAL` con transacciones manuales.
 
-## 👤 Autor
+## Autor
 
 Giovanni — [github.com/giovanniclmb](https://github.com/giovanniclmb)
